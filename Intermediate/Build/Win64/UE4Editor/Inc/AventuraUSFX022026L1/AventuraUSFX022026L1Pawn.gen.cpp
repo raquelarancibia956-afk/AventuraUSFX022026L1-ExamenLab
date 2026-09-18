@@ -17,14 +17,118 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1Pawn() {}
 	AVENTURAUSFX022026L1_API UClass* Z_Construct_UClass_AAventuraUSFX022026L1Pawn();
 	ENGINE_API UClass* Z_Construct_UClass_APawn();
 	UPackage* Z_Construct_UPackage__Script_AventuraUSFX022026L1();
+	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(AAventuraUSFX022026L1Pawn::execOnPawnOverlap)
+	{
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
+		P_GET_OBJECT(AActor,Z_Param_OtherActor);
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
+		P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
+		P_GET_UBOOL(Z_Param_bFromSweep);
+		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_SweepResult);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->OnPawnOverlap(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex,Z_Param_bFromSweep,Z_Param_Out_SweepResult);
+		P_NATIVE_END;
+	}
 	void AAventuraUSFX022026L1Pawn::StaticRegisterNativesAAventuraUSFX022026L1Pawn()
 	{
+		UClass* Class = AAventuraUSFX022026L1Pawn::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "OnPawnOverlap", &AAventuraUSFX022026L1Pawn::execOnPawnOverlap },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics
+	{
+		struct AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms
+		{
+			UPrimitiveComponent* OverlappedComp;
+			AActor* OtherActor;
+			UPrimitiveComponent* OtherComp;
+			int32 OtherBodyIndex;
+			bool bFromSweep;
+			FHitResult SweepResult;
+		};
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
+		static const UE4CodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
+		static void NewProp_bFromSweep_SetBit(void* Obj);
+		static const UE4CodeGen_Private::FBoolPropertyParams NewProp_bFromSweep;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SweepResult_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_SweepResult;
+		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UE4CodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OverlappedComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OverlappedComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OverlappedComp_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherComp_MetaData[] = {
+		{ "EditInline", "true" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherComp_MetaData)) };
+	const UE4CodeGen_Private::FIntPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms, OtherBodyIndex), METADATA_PARAMS(nullptr, 0) };
+	void Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_bFromSweep_SetBit(void* Obj)
+	{
+		((AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms*)Obj)->bFromSweep = 1;
+	}
+	const UE4CodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_bFromSweep = { "bFromSweep", nullptr, (EPropertyFlags)0x0010000000000080, UE4CodeGen_Private::EPropertyGenFlags::Bool | UE4CodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms), &Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_bFromSweep_SetBit, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_SweepResult_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_SweepResult = { "SweepResult", nullptr, (EPropertyFlags)0x0010008008000182, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms, SweepResult), Z_Construct_UScriptStruct_FHitResult, METADATA_PARAMS(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_SweepResult_MetaData, UE_ARRAY_COUNT(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_SweepResult_MetaData)) };
+	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::PropPointers[] = {
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OverlappedComp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherActor,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherComp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_OtherBodyIndex,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_bFromSweep,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::NewProp_SweepResult,
+	};
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "// === NUEVO: l?gica de overlap para destruir solo plataformas Indestructibles ===\n" },
+		{ "ModuleRelativePath", "AventuraUSFX022026L1Pawn.h" },
+		{ "ToolTip", "=== NUEVO: l?gica de overlap para destruir solo plataformas Indestructibles ===" },
+	};
+#endif
+	const UE4CodeGen_Private::FFunctionParams Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AAventuraUSFX022026L1Pawn, nullptr, "OnPawnOverlap", nullptr, nullptr, sizeof(AventuraUSFX022026L1Pawn_eventOnPawnOverlap_Parms), Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00420401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_AAventuraUSFX022026L1Pawn_NoRegister()
 	{
@@ -33,6 +137,7 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1Pawn() {}
 	struct Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -71,6 +176,9 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1Pawn() {}
 	UObject* (*const Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_APawn,
 		(UObject* (*)())Z_Construct_UPackage__Script_AventuraUSFX022026L1,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AAventuraUSFX022026L1Pawn_OnPawnOverlap, "OnPawnOverlap" }, // 2247983411
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics::Class_MetaDataParams[] = {
@@ -167,11 +275,11 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1Pawn() {}
 		"Game",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AAventuraUSFX022026L1Pawn_Statics::PropPointers),
 		0,
 		0x008000A4u,
@@ -186,7 +294,7 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1Pawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAventuraUSFX022026L1Pawn, 1611910416);
+	IMPLEMENT_CLASS(AAventuraUSFX022026L1Pawn, 3378242931);
 	template<> AVENTURAUSFX022026L1_API UClass* StaticClass<AAventuraUSFX022026L1Pawn>()
 	{
 		return AAventuraUSFX022026L1Pawn::StaticClass();

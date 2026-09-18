@@ -37,7 +37,7 @@ APlataforma::APlataforma()
 void APlataforma::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	PosicionInicial = GetActorLocation();
 }
 
 // Called every frame
@@ -47,56 +47,13 @@ void APlataforma::Tick(float DeltaTime)
 
 	TiempoTranscurrido += DeltaTime;
 
-	/*
-	FVector PosicionActual = GetActorLocation();
+	// Movimiento vertical: sube y baja cada TiempoCiclo segundos
+	// Usamos una onda senoidal para que el movimiento sea suave
+	float Fase = (TiempoTranscurrido / TiempoCiclo) * 2.0f * PI;
+	float DesplazamientoZ = FMath::Sin(Fase) * AlturaMovimiento;
 
-	ZActual = PosicionActual.Z;
-
-	if ((ZActual >= ZMax) || (ZActual <= ZMin))
-	{
-		Signo = Signo * -1;
-	}
-	
-	ZActual = ZActual + Signo * Velocidad * DeltaTime;
-
-	PosicionActual.Z = ZActual;
-
-	SetActorLocation(PosicionActual);
-	*/
-
-	/*float TiempoCiclo = FMath::Fmod(TiempoTranscurrido, 15.0f);
-
-	if (TiempoCiclo < 5.0f)
-	{
-		return;
-	}
-
-
-	if (TiempoCiclo >= 5.0f && TiempoCiclo < 15.0f)
-	{
-
-		posicionActual = GetActorLocation();
-
-
-		if (posicionActual.X >= movimientoLimitesMaximos.X || posicionActual.X <= movimientoLimitesMinimos.X) {
-			movimientoDireccion.X *= -1.0f;
-		}
-
-		if (posicionActual.Y >= movimientoLimitesMaximos.Y || posicionActual.Y <= movimientoLimitesMinimos.Y) {
-			movimientoDireccion.Y *= -1.0f;
-		}
-
-		if (posicionActual.Z >= movimientoLimitesMaximos.Z || posicionActual.Z <= movimientoLimitesMinimos.Z) {
-			movimientoDireccion.Z *= -1.0f;
-		}
-
-		FVector posicionNueva = posicionActual + (movimientoDireccion * movimientoVelocidades * DeltaTime);
-		SetActorLocation(posicionNueva);
-	}
-
-	if (TiempoCiclo >= 10.0f && TiempoCiclo < 15.0f)
-	{
-		return;
-	}*/
+	FVector NuevaPosicion = PosicionInicial;
+	NuevaPosicion.Z += DesplazamientoZ;
+	SetActorLocation(NuevaPosicion);
 }
 

@@ -2,6 +2,8 @@
 
 #include "AventuraUSFX022026L1Pawn.h"
 #include "AventuraUSFX022026L1Projectile.h"
+#include "PlataformaIndestructible.h"   // NUEVO
+#include "PlataformaDestructible.h"     // NUEVO
 #include "TimerManager.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
@@ -19,14 +21,26 @@ const FName AAventuraUSFX022026L1Pawn::FireForwardBinding("FireForward");
 const FName AAventuraUSFX022026L1Pawn::FireRightBinding("FireRight");
 
 AAventuraUSFX022026L1Pawn::AAventuraUSFX022026L1Pawn()
-{	
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
+{
+	// === CAMBIO DE APARIENCIA: ahora usa el mesh de plataforma (Shape_Cube) ===
+	// Antes: static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_Cube.Shape_Cube'"));
+
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
 	RootComponent = ShipMeshComponent;
 	ShipMeshComponent->SetCollisionProfileName(UCollisionProfile::Pawn_ProfileName);
 	ShipMeshComponent->SetStaticMesh(ShipMesh.Object);
-	
+
+	// Nueva escala tipo plataforma
+	ShipMeshComponent->SetWorldScale3D(FVector(1.0f, 1.0f, 0.2f));
+
+	// Overlap habilitado para detectar plataformas
+	ShipMeshComponent->SetGenerateOverlapEvents(true);
+
+	// Suscribirse al evento de overlap
+	ShipMeshComponent->OnComponentBeginOverlap.AddDynamic(this, &AAventuraUSFX022026L1Pawn::OnPawnOverlap);
+
 	// Cache our sound effect
 	static ConstructorHelpers::FObjectFinder<USoundBase> FireAudio(TEXT("/Game/TwinStick/Audio/TwinStickFire.TwinStickFire"));
 	FireSound = FireAudio.Object;
@@ -57,22 +71,27 @@ void AAventuraUSFX022026L1Pawn::SetupPlayerInputComponent(class UInputComponent*
 	check(PlayerInputComponent);
 
 	// set up gameplay key bindings
-	PlayerInputComponent->BindAxis(MoveForwardBinding);
+	// PlayerInputComponent->BindAxis(MoveForwardBinding); // COMENTADO: solo nos movemos izq/der
 	PlayerInputComponent->BindAxis(MoveRightBinding);
+
+	// Disparos: mantener ambos por si dispara en varias direcciones
 	PlayerInputComponent->BindAxis(FireForwardBinding);
 	PlayerInputComponent->BindAxis(FireRightBinding);
 }
 
 void AAventuraUSFX022026L1Pawn::Tick(float DeltaSeconds)
 {
-	// Find movement direction
-	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
+	// === SOLO MOVIMIENTO EN Y (izquierda/derecha) ===
+	// Antes:
+	// const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
+	// const float RightValue = GetInputAxisValue(MoveRightBinding);
+	// const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
+
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
+	// Bloqueamos el eje X (Forward) para que solo se mueva en Y
+	const FVector MoveDirection = FVector(0.f, RightValue, 0.f).GetClampedToMaxSize(1.0f);
 
-	// Clamp max size so that (X=1, Y=1) doesn't cause faster movement in diagonal directions
-	const FVector MoveDirection = FVector(ForwardValue, RightValue, 0.f).GetClampedToMaxSize(1.0f);
-
-	// Calculate  movement
+	// Calculate movement
 	const FVector Movement = MoveDirection * MoveSpeed * DeltaSeconds;
 
 	// If non-zero size, move this actor
@@ -81,7 +100,7 @@ void AAventuraUSFX022026L1Pawn::Tick(float DeltaSeconds)
 		const FRotator NewRotation = Movement.Rotation();
 		FHitResult Hit(1.f);
 		RootComponent->MoveComponent(Movement, NewRotation, true, &Hit);
-		
+
 		if (Hit.IsValidBlockingHit())
 		{
 			const FVector Normal2D = Hit.Normal.GetSafeNormal2D();
@@ -89,7 +108,7 @@ void AAventuraUSFX022026L1Pawn::Tick(float DeltaSeconds)
 			RootComponent->MoveComponent(Deflection, NewRotation, true);
 		}
 	}
-	
+
 	// Create fire direction vector
 	const float FireForwardValue = GetInputAxisValue(FireForwardBinding);
 	const float FireRightValue = GetInputAxisValue(FireRightBinding);
@@ -137,3 +156,29 @@ void AAventuraUSFX022026L1Pawn::ShotTimerExpired()
 	bCanFire = true;
 }
 
+//   Pawn vs PlataformaIndestructible -> DESTRUYE la plataforma
+//   Pawn vs PlataformaDestructible   -> NO hace nada (la destruye el proyectil)
+void AAventuraUSFX022026L1Pawn::OnPawnOverlap(
+	UPrimitiveComponent* OverlappedComp,
+	AActor* OtherActor,
+	UPrimitiveComponent* OtherComp,
+	int32 OtherBodyIndex,
+	bool bFromSweep,
+	const FHitResult& SweepResult
+)
+{
+	if (!OtherActor || OtherActor == this) return;
+
+	// Solo destruye si es una plataforma Indestructible
+	if (Cast<APlataformaIndestructible>(OtherActor))
+	{
+		OtherActor->Destroy();
+		return;
+	}
+
+	// Si es Destructible, el pawn NO la destruye (lo hace el proyectil)
+	if (Cast<APlataformaDestructible>(OtherActor))
+	{
+		return;
+	}
+}

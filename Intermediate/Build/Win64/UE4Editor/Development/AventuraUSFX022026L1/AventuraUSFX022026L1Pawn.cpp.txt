@@ -9,6 +9,12 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\In
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\AventuraUSFX022026L1Pawn.generated.h
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\AventuraUSFX022026L1Projectile.h
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\AventuraUSFX022026L1Projectile.generated.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\PlataformaIndestructible.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\Plataforma.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\Plataforma.generated.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\PlataformaIndestructible.generated.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\PlataformaDestructible.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\PlataformaDestructible.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Camera/CameraComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CameraComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/SpringArmComponent.h

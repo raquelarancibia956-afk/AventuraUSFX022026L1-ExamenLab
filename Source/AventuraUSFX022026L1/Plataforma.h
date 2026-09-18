@@ -55,4 +55,10 @@ public:
 	FVector posicionActual = FVector(0.0f, 0.0f, 0.0f);
 
 	float TiempoTranscurrido;
+
+
+	// Movimiento vertical
+	float AlturaMovimiento = 200.0f;   
+	float TiempoCiclo = 5.0f;         
+	FVector PosicionInicial;           
 };

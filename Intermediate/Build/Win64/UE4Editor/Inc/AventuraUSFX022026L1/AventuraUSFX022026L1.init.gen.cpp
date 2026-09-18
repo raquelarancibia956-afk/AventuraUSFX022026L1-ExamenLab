@@ -21,7 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x0C4AC1F9,
+				0xBC3D1511,
 				0x98E58FB6,
 				METADATA_PARAMS(nullptr, 0)
 			};

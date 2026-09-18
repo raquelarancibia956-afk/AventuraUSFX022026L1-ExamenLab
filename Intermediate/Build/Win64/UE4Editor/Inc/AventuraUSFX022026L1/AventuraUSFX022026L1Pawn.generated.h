@@ -8,14 +8,25 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+class AActor;
+struct FHitResult;
 #ifdef AVENTURAUSFX022026L1_AventuraUSFX022026L1Pawn_generated_h
 #error "AventuraUSFX022026L1Pawn.generated.h already included, missing '#pragma once' in AventuraUSFX022026L1Pawn.h"
 #endif
 #define AVENTURAUSFX022026L1_AventuraUSFX022026L1Pawn_generated_h
 
 #define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_SPARSE_DATA
-#define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_RPC_WRAPPERS
-#define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnPawnOverlap);
+
+
+#define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnPawnOverlap);
+
+
 #define AventuraUSFX022026L1_master_Source_AventuraUSFX022026L1_AventuraUSFX022026L1Pawn_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAAventuraUSFX022026L1Pawn(); \
