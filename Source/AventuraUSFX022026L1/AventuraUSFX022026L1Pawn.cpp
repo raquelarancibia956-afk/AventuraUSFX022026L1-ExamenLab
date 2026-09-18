@@ -62,7 +62,7 @@ AAventuraUSFX022026L1Pawn::AAventuraUSFX022026L1Pawn()
 	MoveSpeed = 1000.0f;
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
-	FireRate = 1.0f;
+	FireRate = 0.5f;
 	bCanFire = true;
 }
 

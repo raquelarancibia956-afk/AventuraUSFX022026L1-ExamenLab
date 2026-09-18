@@ -29,6 +29,8 @@ C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\Ave
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\PlataformaSubterranea.generated.h
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\PlataformaAcuatica.h
 C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\PlataformaAcuatica.generated.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Source\AventuraUSFX022026L1\Enemigo.h
+C:\Users\raque\Downloads\Rav\Programacion\AventuraUSFX022026L1-master\Intermediate\Build\Win64\UE4Editor\Inc\AventuraUSFX022026L1\Enemigo.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet/KismetMathLibrary.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetMathLibrary.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Kismet\KismetMathLibrary.inl

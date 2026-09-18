@@ -4,7 +4,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/StaticMeshComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+
 #include "Engine/StaticMesh.h"
 
 AAventuraUSFX022026L1Projectile::AAventuraUSFX022026L1Projectile() 
@@ -37,7 +37,7 @@ AAventuraUSFX022026L1Projectile::AAventuraUSFX022026L1Projectile()
 	
 
 	ProjectileMovement->bShouldBounce = true;           // Activar rebote
-	ProjectileMovement->Bounciness = 1.0f;              // 1.0 = rebote perfecto 
+	ProjectileMovement->Bounciness = 1.0f;              
 	ProjectileMovement->Friction = 0.0f;                // 0.0 = sin fricción al rebotar
 }
 

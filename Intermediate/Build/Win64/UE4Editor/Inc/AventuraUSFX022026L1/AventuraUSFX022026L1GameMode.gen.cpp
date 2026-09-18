@@ -112,9 +112,9 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1GameMode() {}
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AAventuraUSFX022026L1GameMode_Statics::NewProp_ClasePlataformaIndestructible_MetaData[] = {
 		{ "Category", "Spawner" },
-		{ "Comment", "// Clases de plataformas a spawnear (asignables desde el editor o por c?digo)\n" },
+		{ "Comment", "// Clases de plataformas a spawnear\n" },
 		{ "ModuleRelativePath", "AventuraUSFX022026L1GameMode.h" },
-		{ "ToolTip", "Clases de plataformas a spawnear (asignables desde el editor o por c?digo)" },
+		{ "ToolTip", "Clases de plataformas a spawnear" },
 	};
 #endif
 	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_AAventuraUSFX022026L1GameMode_Statics::NewProp_ClasePlataformaIndestructible = { "ClasePlataformaIndestructible", nullptr, (EPropertyFlags)0x0014000000000005, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AAventuraUSFX022026L1GameMode, ClasePlataformaIndestructible), Z_Construct_UClass_APlataforma_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AAventuraUSFX022026L1GameMode_Statics::NewProp_ClasePlataformaIndestructible_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AAventuraUSFX022026L1GameMode_Statics::NewProp_ClasePlataformaIndestructible_MetaData)) };
@@ -184,7 +184,7 @@ void EmptyLinkFunctionForGeneratedCodeAventuraUSFX022026L1GameMode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AAventuraUSFX022026L1GameMode, 2263049241);
+	IMPLEMENT_CLASS(AAventuraUSFX022026L1GameMode, 286740);
 	template<> AVENTURAUSFX022026L1_API UClass* StaticClass<AAventuraUSFX022026L1GameMode>()
 	{
 		return AAventuraUSFX022026L1GameMode::StaticClass();

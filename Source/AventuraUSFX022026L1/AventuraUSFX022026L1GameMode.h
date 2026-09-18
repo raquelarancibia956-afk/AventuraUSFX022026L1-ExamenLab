@@ -8,6 +8,7 @@
 
 class APlataforma;
 class APared;
+class AEnemigo;
 
 UCLASS(MinimalAPI)
 class AAventuraUSFX022026L1GameMode : public AGameModeBase
@@ -28,10 +29,13 @@ public:
 	FTimerHandle TimerEliminarPlataforma;
 	APared* Pared1;
 	APared* Pared2;
+	APared* Pared3;
+	APared* Pared4;
+	AEnemigo* Enemigo1;
 
 	int tipoPlataformaActual;
 
-	// Clases de plataformas a spawnear (asignables desde el editor o por código)
+	// Clases de plataformas a spawnear
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawner")
 	TSubclassOf<APlataforma> ClasePlataformaIndestructible;
 

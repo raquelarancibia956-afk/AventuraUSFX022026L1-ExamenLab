@@ -16,7 +16,7 @@ APared::APared()
 	malla->SetupAttachment(RootComponent);
 	RootComponent = malla;
 
-	malla->SetWorldScale3D(FVector((- 2042.0f + 1952)/2, 1.0f, 3.0f));   
+	malla->SetWorldScale3D(FVector((- 2042.0f + 1952)/3, 1.0f, 3.0f));   
 
 	
 

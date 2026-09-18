@@ -10,11 +10,11 @@
 #include "PlataformaTerrestre.h"
 #include "PlataformaSubterranea.h"
 #include "PlataformaAcuatica.h"
+#include "Enemigo.h"
 #include "Kismet/KismetMathLibrary.h"
 
 AAventuraUSFX022026L1GameMode::AAventuraUSFX022026L1GameMode()
 {
-	// set default pawn class to our character class
 	DefaultPawnClass = AAventuraUSFX022026L1Pawn::StaticClass();
 
 	tipoPlataformaActual = 0;
@@ -27,24 +27,26 @@ void AAventuraUSFX022026L1GameMode::BeginPlay()
 	Super::BeginPlay();
 
 	UWorld* World = GetWorld();
-
-	if (World == nullptr)
-	{
-		return;
-	}
+	if (World == nullptr) return;
 
 	FRotator Rotacion = FRotator::ZeroRotator;
-	FVector SpawnLocation = FVector::ZeroVector;
 
-	Pared1 = World->SpawnActor<APared>(APared::StaticClass(), FVector(90,860,160), Rotacion);
-	Pared2 = World->SpawnActor<APared>(APared::StaticClass(), FVector(30,-880,160), Rotacion);
+	// ===== PAREDES =====
+	Pared1 = World->SpawnActor<APared>(APared::StaticClass(), FVector(650, -950, 160), Rotacion);
+	Pared2 = World->SpawnActor<APared>(APared::StaticClass(), FVector(560, 910, 160), Rotacion);
+	Pared3 = World->SpawnActor<APared>(APared::StaticClass(), FVector(-2920, 900, 160), Rotacion);
+	Pared4 = World->SpawnActor<APared>(APared::StaticClass(), FVector(-2880,-940, 160), Rotacion);
 
+	// ===== ENEMIGO =====
+	Enemigo1 = World->SpawnActor<AEnemigo>(AEnemigo::StaticClass(), FVector(-140, 15, 214), Rotacion);
+
+	// ===== TIMER DE PLATAFORMAS =====
 	GetWorldTimerManager().SetTimer(
 		TimerHandleSpawn,
 		this,
 		&AAventuraUSFX022026L1GameMode::SpawnearPlataformaAleatoria,
 		IntervaloSpawn,
-		true // repetir
+		true
 	);
 }
 
@@ -58,7 +60,6 @@ void AAventuraUSFX022026L1GameMode::SpawnearPlataformaAleatoria()
 	UWorld* World = GetWorld();
 	if (!World) return;
 
-	// Elegir aleatoriamente entre destructible e indestructible
 	bool bElegirIndestructible = FMath::RandBool();
 
 	TSubclassOf<APlataforma> ClaseAElegir =
@@ -66,7 +67,6 @@ void AAventuraUSFX022026L1GameMode::SpawnearPlataformaAleatoria()
 
 	if (!ClaseAElegir) return;
 
-	// Calcular posición aleatoria dentro del rango
 	FVector PosicionAleatoria = UKismetMathLibrary::RandomPointInBoundingBox(
 		RangoSpawnMin,
 		RangoSpawnMax
@@ -83,4 +83,3 @@ void AAventuraUSFX022026L1GameMode::SpawnearPlataformaAleatoria()
 		SpawnParams
 	);
 }
-
