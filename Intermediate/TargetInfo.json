@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "AventuraUSFX022026L1",
+			"Path": "C:\\Users\\raque\\Downloads\\Rav\\Programacion\\AventuraUSFX022026L1-master\\Source\\AventuraUSFX022026L1.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "AventuraUSFX022026L1Editor",
+			"Path": "C:\\Users\\raque\\Downloads\\Rav\\Programacion\\AventuraUSFX022026L1-master\\Source\\AventuraUSFX022026L1Editor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
